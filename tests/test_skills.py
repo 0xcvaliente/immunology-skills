@@ -7,6 +7,7 @@ numbered by ANARCII 2.0.8) and tests/fixtures/1zvy_backbone.pdb (backbone atoms 
 """
 import contextlib
 import csv
+import glob
 import importlib.util
 import io
 import json
@@ -539,7 +540,25 @@ class RepoConventions(unittest.TestCase):
             self.assertNotIn(": ", m.group(2), name + ": ': ' inside an unquoted YAML scalar breaks strict parsers")
             self.assertNotIn(" #", m.group(2), name + ": ' #' starts a YAML comment")
 
+    def test_claude_md_imports_agents_md(self):
+        self.assertEqual(rtext(os.path.join(ROOT, "CLAUDE.md")).strip(), "@AGENTS.md")
+        self.assertTrue(os.path.isfile(os.path.join(ROOT, "AGENTS.md")))
+
+    def test_script_mentions_resolve(self):
+        scripts = {os.path.basename(p) for p in glob.glob(os.path.join(ROOT, "*", "scripts", "*.py"))}
+        docs = glob.glob(os.path.join(ROOT, "*.md")) + glob.glob(os.path.join(ROOT, "*", "**", "*.md"), recursive=True)
+        for path in docs:
+            for name in re.findall(r"scripts/([A-Za-z0-9_]+\.py)", rtext(path)):
+                self.assertIn(name, scripts, "%s mentions scripts/%s, which does not exist" % (os.path.relpath(path, ROOT), name))
+
     def test_relative_links_resolve(self):
+        root_docs = [os.path.join(ROOT, n) for n in ("README.md", "AGENTS.md")]
+        for path in root_docs:
+            for target in re.findall(r"\]\((?!https?://|#|mailto:)([^)\s]+)\)", rtext(path)):
+                target = target.split("#")[0]
+                if target:
+                    self.assertTrue(os.path.exists(os.path.normpath(os.path.join(os.path.dirname(path), target))),
+                                    "%s links to missing %s" % (os.path.relpath(path, ROOT), target))
         for name in self.skills():
             files = [os.path.join(ROOT, name, "SKILL.md")]
             for dp, _, fn in os.walk(os.path.join(ROOT, name, "references")):

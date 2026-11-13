@@ -49,6 +49,8 @@ python3 -m unittest discover -s tests -v     # no network; a few seconds
 
 [`oslo-antibodies-hackathon`](oslo-antibodies-hackathon/SKILL.md) starts with `python3 oslo-antibodies-hackathon/scripts/read_guide.py --diff`, because the organisers say weights and model access may still change and that the task itself is released at 09:30 on the day. The design workflow it points to is [`antibody-binder-design`](antibody-binder-design/SKILL.md).
 
+**For agents.** [`AGENTS.md`](AGENTS.md) covers working in this repository (loaded automatically through `CLAUDE.md`); the [agent runbook](oslo-antibodies-hackathon/references/agent-runbook.md) covers running the day: who decides what, which repository gets what, when to stop and ask, and starter prompts.
+
 **Rules note.** The event's FAQ says: "All project outputs and repositories must be created during the hackathon." These skills are prepared tooling and knowledge, not a submission. Disclose them to the organisers, ask whether they may be used, and create the team's repository, and the team's own skill, on the day. A skeleton for that skill is in `oslo-antibodies-hackathon/assets/team-skill-template.md`.
 
 ## Conventions

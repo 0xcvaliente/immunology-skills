@@ -45,6 +45,7 @@ Each group must also provide score tables and say where each score came from. Pr
 
 ## 5. Prepare, run the day, pitch
 
+- How the agent conducts itself (who decides, which repository gets what, stop points, starter prompts), read at the start of every session: [references/agent-runbook.md](references/agent-runbook.md).
 - Before the day: [references/prep-checklist.md](references/prep-checklist.md): accounts, laptop, the 1ZVY practice run (whose numbers are verified in `event-facts.md`), a dry run on a target you have not designed for, reading by role.
 - The day: [references/day-plan.md](references/day-plan.md): the timeline built around an early end-to-end result, a freeze at 15:00, a held-out run, and five roles including a skeptic.
 - The pitch: [references/pitch.md](references/pitch.md): five minutes mapped to the four criteria, with the likely questions.
