@@ -134,7 +134,7 @@ def main(argv=None):
         if cls == "nanobody" and vq and not bad and len(parts) == 1:
             labels, info = vq.segment_vh(seq.upper())
             if labels is None:
-                warnings.append("%s: labelled nanobody but not recognised as a VH/VHH domain (%s); a design only counts as a nanobody if a numbering tool annotates it as one" % (tag, info.get("reason", "")[:80]))
+                warnings.append("%s: labelled nanobody but not recognised as a VH/VHH domain (%s); a design only counts as a nanobody if a numbering tool annotates it as one" % (tag, info.get("reason", "no reason given")))
         if cls.startswith("fab") and vq and len(parts) == 2 and not bad:
             if vq.segment_vh(parts[0])[0] is None:
                 warnings.append("%s: the VH half is not recognised as a heavy-chain variable domain" % tag)
