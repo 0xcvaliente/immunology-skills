@@ -98,8 +98,13 @@ def segment_vh(seq):
     return labels, {"c23": c23, "w41": w41, "c104": c104, "w118": w118, "method": "heuristic"}
 
 
-def segment_anarcii(seqs, gpu=False):
-    """Number sequences with ANARCII (IMGT) and return [(labels, info), ...] in input order."""
+def segment_anarcii(seqs, gpu=False, min_score=25.0):
+    """Number sequences with ANARCII (IMGT) and return [(labels, info), ...] in input order.
+
+    ANARCII will number a shark VNAR as a heavy chain, only with a much lower score: in four
+    PDB-derived sets every heavy-chain domain scored 26.2 or more and the two VNARs scored
+    17.9 and 19.5, so scores below min_score are reported as unplaced.  The floor is empirical.
+    """
     try:
         from anarcii import Anarcii
     except ImportError:
@@ -116,18 +121,23 @@ def segment_anarcii(seqs, gpu=False):
         k = res.get("query_start", 0)
         last = k
         info = {"method": "anarcii", "chain_type": res.get("chain_type"), "score": round(float(res.get("score", 0.0)), 1)}
-        for (pos, _icode), aa in numbering:
+        for (pos, icode), aa in numbering:
             if aa == "-":
                 continue
             name = next((r for r, (a, b) in IMGT_RANGES.items() if a <= pos <= b), "tail")
             if k < len(seq):
                 labels[k] = name
+                if aa == "C" and icode.strip() == "" and pos in (23, 104):
+                    info["c23" if pos == 23 else "c104"] = k
             last = k
             k += 1
         for i in range(last + 1, len(seq)):
             labels[i] = "tail"
         if info["chain_type"] != "H":
             out.append((None, {"reason": "ANARCII calls this a %s chain, not a heavy-chain variable domain" % info["chain_type"], **info}))
+            continue
+        if info["score"] < min_score:
+            out.append((None, {"reason": "ANARCII score %.1f is below %.1f: numbered as a heavy chain with low confidence (for example a shark VNAR)" % (info["score"], min_score), **info}))
             continue
         out.append((labels, info))
     return out
@@ -378,6 +388,7 @@ def main(argv=None):
     ap.add_argument("--id-col", help="id column in CSV/TSV (default: name|id)")
     ap.add_argument("--numbering", choices=("heuristic", "anarcii"), default="heuristic")
     ap.add_argument("--gpu", action="store_true", help="let ANARCII use a GPU (default: CPU)")
+    ap.add_argument("--min-anarcii-score", type=float, default=25.0, help="with --numbering anarcii, treat a lower ANARCII score as unplaced (default 25, empirical)")
     ap.add_argument("--format", choices=("text", "tsv", "json"), help="default: text for <=12 records, else tsv")
     ap.add_argument("--annotate", action="store_true", help="CSV in, CSV out: input rows plus qc_* columns")
     ap.add_argument("-o", "--output", help="output file (default: stdout)")
@@ -388,7 +399,7 @@ def main(argv=None):
         sys.exit("no sequences found")
     cleaned = [clean(r[1])[0] for r in records]
     if args.numbering == "anarcii":
-        placed = segment_anarcii(cleaned, gpu=args.gpu)
+        placed = segment_anarcii(cleaned, gpu=args.gpu, min_score=args.min_anarcii_score)
     else:
         placed = [segment_vh(s) if s else (None, {"reason": "empty sequence"}) for s in cleaned]
     results = [analyse_one(r[0], r[1], p) for r, p in zip(records, placed)]

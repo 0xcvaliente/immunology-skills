@@ -40,7 +40,7 @@ Known limits, all of which are reported rather than guessed:
 - **Cys23 mutated** (cysteine-free engineered nanobodies) is returned as unplaced; two such sequences were the only misses.
 - A **2-residue deletion in FR1** or an **insertion in FR2/FR3** shifts a boundary by one or two residues (about 1 sequence in 100). Where the exact CDR2 or FR3 boundary decides something, use `--numbering anarcii`.
 - One domain only. Tandem constructs and long inputs are flagged; split them first.
-- It cannot name the chain type reliably in unusual cases (an engineered light chain carrying a VH-style FR4 is caught by its `R-F-S-G-S` FR3 signature, but other chimeras may not be). ANARCII reports H/K/L and a confidence score; in this panel confident heavy-chain domains scored about 28–30 and shark VNARs forced through the antibody model about 18–19.
+- It cannot name the chain type reliably in unusual cases (an engineered light chain carrying a VH-style FR4 is caught by its `R-F-S-G-S` FR3 signature, but other chimeras may not be). ANARCII reports H/K/L and a confidence score; across the four sets every heavy-chain domain scored 26.2 or more, with a median near 30, and the two shark VNARs forced through the antibody model scored 17.9 and 19.5. `--numbering anarcii` therefore treats a score below 25 as unplaced (`--min-anarcii-score` changes it); the floor is empirical, from two VNARs, so look at the score when a sequence is unusual. Unlike the heuristic, the ANARCII path places Cys23-mutated nanobodies.
 - Ground truth is itself a model. Treat ANARCII as the reference, not as an experiment.
 
 The regression panel is in `tests/fixtures/vhh_panel.json`; `python3 -m unittest discover -s tests` re-runs it.

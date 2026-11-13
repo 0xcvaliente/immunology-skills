@@ -491,6 +491,38 @@ class ReadGuide(unittest.TestCase):
         self.assertIn("November 14, 2026", snap["EVENT"])
 
 
+HAVE_ANARCII = importlib.util.find_spec("anarcii") is not None
+
+
+@unittest.skipUnless(HAVE_ANARCII, "anarcii not installed (pip install anarcii)")
+class AnarciiPath(unittest.TestCase):
+    """The --numbering anarcii wrapper; skipped where PyTorch and ANARCII are absent."""
+
+    def test_panel_regions_match_and_non_vh_are_rejected(self):
+        panel = jload(os.path.join(FIX, "vhh_panel.json"))["records"]
+        results = vhh_qc.segment_anarcii([r["seq"] for r in panel])
+        for rec, (labels, info) in zip(panel, results):
+            if rec["expect"] == "placed":
+                self.assertIsNotNone(labels, "%s: %s" % (rec["name"], info))
+                regs = vhh_qc.regions_from_labels(rec["seq"], labels)
+                for key in ("cdr1", "cdr2", "cdr3", "fr2", "fr3", "fr4"):
+                    self.assertEqual(regs[key.upper()], rec[key], "%s %s" % (rec["name"], key))
+                self.assertEqual(vhh_qc.hallmarks(rec["seq"], labels, info), rec["hall"])
+                self.assertIn("c23", info)
+                self.assertIn("c104", info)
+            elif rec["name"] in ("9UVH_1", "9UP9_1"):
+                self.assertIsNone(labels, "VNAR must fall below the score floor")
+                self.assertIn("below", info["reason"])
+            elif rec["name"] == "9VUZ_1":
+                self.assertIsNone(labels)
+                self.assertIn("K chain", info["reason"])
+
+    def test_contig_is_the_same_with_either_numbering(self):
+        code, out = run(cdr_contig.main, [os.path.join(FIX, "1zvy_backbone.pdb"), "--chain", "A", "--target-chain", "B", "--numbering", "anarcii"])
+        self.assertEqual(code, 0)
+        self.assertIn("B1-129, /0, A2-96, 20, A117-125", out)
+
+
 class RepoConventions(unittest.TestCase):
     def skills(self):
         return sorted(d for d in os.listdir(ROOT) if os.path.isfile(os.path.join(ROOT, d, "SKILL.md")))
