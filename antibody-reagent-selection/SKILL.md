@@ -1,6 +1,6 @@
 ---
 name: antibody-reagent-selection
-description: Choose and qualify a commercial research antibody - writing the spec, reading a datasheet, judging validation evidence against the five pillars, picking monoclonal or polyclonal, host and isotype, conjugates and secondary antibodies, planning controls, and troubleshooting a failed Western blot, IHC, IF, ELISA, flow cytometry, IP or ChIP experiment. Use when asked which antibody to buy or whether one is any good, when a datasheet or vendor claim needs assessment, or when an immunoassay gives no signal, extra bands, high background or an unexpected molecular weight. Validation is application-specific: an antibody is only validated for the application, species and sample type it was tested in. Use antibody-literature-search to find published use of a clone, antibody-therapeutics-landscape for formats and vocabulary.
+description: Choose and qualify a commercial research antibody - writing the spec, reading a datasheet, judging validation evidence against the five pillars, picking monoclonal or polyclonal, host and isotype, conjugates and secondary antibodies, planning controls, troubleshooting a failed Western blot, IHC, IF, ELISA, flow cytometry, IP or ChIP experiment, and reading SPR or BLI binding data (what a KD rests on, orientation, controls). Use when asked which antibody to buy or whether one is any good, when a datasheet or vendor claim needs assessment, or when an immunoassay gives no signal, extra bands, high background or an unexpected molecular weight. Validation is application-specific, so an antibody is only validated for the application, species and sample type it was tested in. Use antibody-literature-search to find published use of a clone, antibody-therapeutics-landscape for formats and vocabulary, antibody-binder-design when the antibody is to be designed rather than bought.
 ---
 
 # Antibody reagent selection
@@ -63,6 +63,6 @@ Where a choice exists, a recombinant monoclonal with knockout validation in the 
 
 ## Reference
 
-- [references/applications.md](references/applications.md) — what each application demands of an antibody, and the gotchas particular to it.
+- [references/applications.md](references/applications.md) — what each application demands of an antibody, and the gotchas particular to it, including SPR and BLI binding kinetics.
 - [references/validation.md](references/validation.md) — reading a datasheet, the five pillars in practice, RRIDs, what good and bad validation figures look like.
 - [references/controls-and-troubleshooting.md](references/controls-and-troubleshooting.md) — control sets, and symptom-to-cause tables for failed experiments.

@@ -1,6 +1,6 @@
 ---
 name: antibody-therapeutics-landscape
-description: Antibodies as drugs and as an industry - molecular formats (IgG subclass, Fab, scFv, VHH, bispecific, ADC, Fc engineering), drug-name decoding, the discovery-to-approval path, regulatory routes, developability, CMC and commercial vocabulary, plus biotech employer research and interview prep. Use when a prompt names an antibody drug, a mAb format, an antibody or biotech company, asks what a biotech term means, or asks about a biotech role, job ad or interview. Approval counts, pipelines and company facts are volatile and get looked up, never recalled. Use antibody-literature-search to find papers, trials and database records, antibody-reagent-selection to choose a lab antibody, antibody-sequence-bioinformatics for sequence data.
+description: Antibodies as drugs and as an industry - molecular formats (IgG subclass, Fab, scFv, VHH, bispecific, ADC, Fc engineering), drug-name decoding, the discovery-to-approval path, regulatory routes, developability, CMC and commercial vocabulary, nanobody (VHH) drugs, how to argue user fit and path to value for a design tool or pitch, plus biotech employer research and interview prep. Use when a prompt names an antibody drug, a mAb or nanobody format, an antibody or biotech company, asks what a biotech term means, who would use or buy a design result, or asks about a biotech role, job ad or interview. Approval counts, pipelines and company facts are volatile and get looked up, never recalled. Use antibody-literature-search to find papers, trials and database records, antibody-reagent-selection to choose a lab antibody, antibody-sequence-bioinformatics for sequence data.
 ---
 
 # Therapeutic antibody landscape
@@ -40,7 +40,8 @@ Five questions. Answer all five and the asset is understood; mark explicitly any
 
 ## Reference
 
-- [references/formats.md](references/formats.md) — immunoglobulin anatomy, IgG subclasses, fragments, bispecific architectures, ADC anatomy, Fc engineering, and decoding a drug's name.
+- [references/formats.md](references/formats.md) — immunoglobulin anatomy, IgG subclasses, fragments, VHH as a drug, bispecific architectures, ADC anatomy, Fc engineering, and decoding a drug's name.
 - [references/glossary.md](references/glossary.md) — working vocabulary grouped by where it shows up: binding, discovery, developability, PK and effector function, clinical, regulatory, CMC, commercial.
 - [references/development-path.md](references/development-path.md) — target to label, regulatory routes in the US, EU and Norway, biosimilars, and what kills programmes.
+- [references/value-and-pitch.md](references/value-and-pitch.md) — user fit and path to value for a design tool or result: who buys what, where the value sits, what is defensible, a clinical-problem-to-property table, nanobody selling points.
 - [references/careers.md](references/careers.md) — reading a biotech job ad, role families, the IT and data angle, employer research, interview prep.

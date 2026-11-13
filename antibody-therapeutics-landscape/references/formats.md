@@ -35,6 +35,19 @@ Half-life for an unengineered human IgG1 in humans is roughly three weeks, set b
 
 Smaller means faster tumour penetration and faster clearance at once; the two trade against each other, and the choice follows the intended dose interval and route.
 
+## VHH as a drug
+
+A VHH is the binding domain of a camelid heavy-chain-only antibody used alone: about 120 residues and 15 kDa, three CDRs, no light chain. The sequence-level features (hallmark residues, cysteines, numbering) are in antibody-sequence-bioinformatics `references/vhh.md`; this is what the format means for a medicine (participant guide, retrieved 2026-11-13, unless stated).
+
+- **One gene, one molecule.** The designed sequence is literally what a lab orders; production is usually in bacteria or yeast, which is cheap compared with mammalian cells for full antibodies.
+- **Penetration and access.** Small size gives good tissue penetration and reach into clefts a full IgG cannot enter.
+- **Clearance.** At 15 kDa a bare VHH is filtered by the kidneys within hours. Formats are therefore built by fusion: an Fc or an albumin binder for half-life, or several VHHs joined to bind two targets or two epitopes.
+- **No Fc.** A bare VHH can block or deliver but cannot recruit effector cells unless fused to an Fc.
+- **Examples.** Caplacizumab (Cablivi) was the first nanobody-based medicine, for acquired thrombotic thrombocytopenic purpura; ozoralizumab is approved in Japan for rheumatoid arthritis. Approval status is volatile: confirm in the current approved-antibody tables before quoting.
+- **Name.** "Nanobody" is an Ablynx (Sanofi) trademark; "VHH" and "single-domain antibody" are the generic terms. Which INN stem a VHH takes under the 2021 scheme is a lookup in the WHO stem book, not something to assume.
+
+Format choice is a pharmacokinetics decision before it is a binding one. For how this plays in a pitch, see [value-and-pitch.md](value-and-pitch.md).
+
 ## Bispecifics and multispecifics
 
 A bispecific binds two different epitopes. The architecture decides geometry, valency and manufacturability.
