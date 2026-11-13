@@ -10,6 +10,8 @@ Stable entry points. Endpoints drift, so when a call fails, fetch the resource's
 
 **bioRxiv / medRxiv** — `https://api.biorxiv.org/details/biorxiv/<DOI>`. Preprints, label them as such.
 
+**OpenAlex** — `https://api.openalex.org/works/https://doi.org/<DOI>`. Open metadata and citation graph, no key, useful for resolving a DOI to a title, venue and year and for finding what cites a paper. **Crossref** (`https://api.crossref.org/works/<DOI>`) is the registration authority for DOIs and the place to confirm a DOI actually resolves before citing it.
+
 **Google Scholar** has no API and should not be scraped; use it by hand through the browser when citation counts matter.
 
 ## Target biology
@@ -19,6 +21,14 @@ Stable entry points. Endpoints drift, so when a call fails, fetch the resource's
 **Human Protein Atlas** — `https://www.proteinatlas.org/<ENSG>-<gene>`; tissue and cell-line expression, plus antibody staining images with their own reliability scores.
 
 **AlphaFold DB** — `https://alphafold.ebi.ac.uk/entry/<accession>` for predicted structure where no experimental one exists; a prediction, not evidence of conformation.
+
+## Epitopes and immune-receptor data
+
+**IEDB (Immune Epitope Database)** — `https://www.iedb.org`. NIAID-funded catalogue of experimentally characterised B-cell and T-cell epitopes across infectious disease, allergy, autoimmunity and transplantation, with the assay and the reference behind each entry. The place to check whether an epitope has been mapped before, and how, rather than inferring it from a structure.
+
+**IMGT/mAb-DB** — `https://www.imgt.org/mAb-DB/`. Curated therapeutic and diagnostic monoclonal antibodies and fusion proteins, with their sequences, targets and clinical stage, cross-linked into IMGT's gene and structure data. Complements Thera-SAbDab when the question is a fusion protein or the IMGT gene context.
+
+**PLAbDab (Patent and Literature Antibody Database)** — `https://opig.stats.ox.ac.uk/webapps/plabdab/`. Over 150,000 paired antibody sequences mined from patents and papers, each linked to its source, searchable by sequence or CDR structure. The tool for "has this antibody sequence appeared before", which neither the literature nor the PDB answers directly.
 
 ## Structures
 
@@ -38,18 +48,40 @@ OPIG publishes successor tools and occasionally reorganises these webapps; if a 
 
 **OGRDB** — `https://ogrdb.airr-community.org`. AIRR Community germline sets, inferred alleles included; the citable source when a germline reference needs a version.
 
+## Repertoire and sequence repositories
+
+Where annotated repertoire data lives, and where to deposit it. All speak the AIRR Rearrangement schema (see antibody-sequence-bioinformatics).
+
+**OAS (Observed Antibody Space)** — `https://opig.stats.ox.ac.uk/webapps/oas/`. Billions of repertoire sequences from published studies, for background distributions and germline context.
+
+**iReceptor Gateway** — `https://gateway.ireceptor.org`. Federated search across AIRR-seq repositories (billions of annotated sequences) through the AIRR Data Commons API; the fastest way to ask whether a junction has been seen elsewhere.
+
+**VDJbase** — `https://vdjbase.org`. Curated immune-receptor gene and allele variation across individuals, from AIRR-seq and genomic data; the reference for population-level germline questions that a single reference set hides.
+
+**NCBI SRA / ENA** — raw sequencing reads, submitted with MiAIRR-compliant study, subject and sample metadata. VDJServer (`https://vdjserver.org`) is an AIRR-aware alternative for analysis and deposition.
+
 ## Clinical and regulatory
 
 **ClinicalTrials.gov API v2** — `https://clinicaltrials.gov/api/v2/studies?query.term=<q>&format=json`. Filter on phase, status and intervention. The registry record is the primary source for what a trial set out to do; compare it against the publication for what was reported.
 
-**EU CTIS** — `https://euclinicaltrials.eu/ctis-public/search`, public register of EU trials under Regulation 536/2014.
+**EU CTIS** — `https://euclinicaltrials.eu/ctis-public/search`, public register of EU trials under Regulation 536/2014 (CTIS launched 31 January 2022 and is a WHO primary registry). Trials authorised before that date sit in the predecessor EU Clinical Trials Register, `https://www.clinicaltrialsregister.eu`.
 
-**The Antibody Society** — `https://www.antibodysociety.org/resources/approved-antibodies/`, the maintained table of antibodies approved or in regulatory review in the EU or US.
+**WHO ICTRP** — `https://www.who.int/tools/clinical-trials-registry-platform`. A registry of registries: it aggregates ClinicalTrials.gov, CTIS, ISRCTN, ANZCTR, ChiCTR, CTRI, DRKS, JPRN and others into one search portal. Use it when a trial may be registered only outside the US or EU.
+
+**The Antibody Society** — `https://www.antibodysociety.org/resources/approved-antibodies/`, the maintained table of antibodies approved or in regulatory review in the EU or US. Its searchable companion **YAbS** (`https://db.antibodysociety.org/`) covers approved, in-development and terminated antibody therapeutics.
 
 **Labels** — Drugs@FDA and the FDA label database; EMA's medicine pages for the EPAR and SmPC. The label settles indication, dosing and warnings; secondary sources often lag it.
 
-## Reagents and sequences in patents
+## Nomenclature
 
-**Antibody Registry** — `https://antibodyregistry.org`, assigns RRIDs to commercial antibodies; the identifier that makes a reagent citation reproducible.
+**WHO INN** — `https://www.who.int/teams/health-product-and-policy-standards/inn/stembook`. The stem book defines every INN stem and pre-stem, including the mAb scheme (`-tug`, `-bart`, `-ment`, `-mig`) and the `-fusp` fusion-protein scheme. Quote the WHO definition, not a remembered gloss. The USAN Council (`https://www.ama-assn.org/about/united-states-adopted-names-usan`) publishes the parallel US naming policy.
+
+## Reagents, cell lines and patents
+
+**Antibody Registry** — `https://antibodyregistry.org`, assigns RRIDs to commercial antibodies; the identifier that makes a reagent citation reproducible. The **RRID portal** (`https://rrid.site`, `https://scicrunch.org/resources`) resolves an RRID and also covers cell lines, organisms and software.
+
+**Cellosaurus** — `https://www.cellosaurus.org`. The curated reference for cell lines, and the authority behind cell-line RRIDs (`RRID:CVCL_...`). Check identity, misidentified-line notes and knockout/background status before trusting a line as a control.
+
+**CiteAb** — `https://www.citeab.com`. Reagent and cell-line search ranked by how often each is cited in the literature; useful for finding which clone papers actually used.
 
 **Patent sequences** — Lens.org PatSeq, EPO Espacenet, Google Patents. Many therapeutic antibody sequences appear first in patent filings; a patent is a disclosure, not peer-reviewed evidence, and sequence-to-molecule mapping in filings is frequently ambiguous.

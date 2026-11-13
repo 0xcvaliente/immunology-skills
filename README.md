@@ -27,13 +27,18 @@ All four are model-invoked, so Claude reaches them on its own when a prompt matc
 
 ## Conventions
 
-Three rules carry most of the value and are enforced in the skill text itself:
+Four rules carry most of the value and are enforced in the skill text itself:
 
 - **Volatile facts get looked up.** Approval counts, pipelines, ownership and company facts are never answered from memory — the skill names the source and asks for a retrieval date.
 - **Every identifier resolves.** No PMID, DOI, accession, PDB ID or catalogue number is written without being fetched first.
+- **Sources are primary and versioned.** Facts come from the registry, sequence or structure record itself rather than a secondary summary, and a versioned resource is cited with its release and retrieval date — database content changes between releases.
 - **Coordinates and validation carry their qualifiers.** A residue number travels with its numbering scheme; a validated antibody is validated for a named application, species and sample type, and nothing beyond it.
 
 Written to the `writing-for-agents` conventions: steps in the main file, reference behind pointers, one source of truth per fact.
+
+## Sources
+
+The skills point at primary, maintained repositories only — Europe PMC and PubMed (NLM), UniProt, RCSB PDB and PDBe, IEDB (NIAID), SAbDab / Thera-SAbDab / OAS / PLAbDab (OPIG, Oxford), IMGT and IMGT/mAb-DB (CNRS), OGRDB and the AIRR Standards (AIRR Community), iReceptor and VDJbase, ClinicalTrials.gov, EU CTIS and WHO ICTRP, the Antibody Society and YAbS, the WHO INN Programme, Cellosaurus, the Antibody Registry (RRID) and CiteAb. The full list, with endpoints, is in [`antibody-literature-search/references/resources.md`](antibody-literature-search/references/resources.md).
 
 ## Scope
 

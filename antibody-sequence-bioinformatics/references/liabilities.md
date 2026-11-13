@@ -27,8 +27,8 @@ Rules for using them:
 ## Humanness and germline identity
 
 - **Germline identity** — percentage identity of V region to the nearest human germline, reported per chain with the reference set named.
-- **Humanness scores** — T20, OASis and similar metrics score against repertoire distributions; they are relative measures whose thresholds are conventions, so quote the method and the threshold with the number.
-- **T-cell epitope prediction** — MHC class II binding predictions flag immunogenicity risk. Predictions are weakly correlated with clinical ADA, so treat them as a triage tool and defer to ex vivo assays and clinical data.
+- **Humanness scores** — T20, OASis and BioPhi's Sapiens (Prihoda et al., *mAbs* 2022) score a V region against repertoire or germline distributions; they are relative measures whose thresholds are conventions, so quote the method and the threshold with the number. They also drive humanization tools (for example BioPhi, Hu-mAb), which is where the score becomes an action rather than a report.
+- **T-cell epitope prediction** — MHC class II binding predictions (NetMHCIIpan, and the IEDB's binding and immunogenicity predictors) flag immunogenicity risk. Predictions are weakly correlated with clinical ADA, so treat them as a triage tool and defer to ex vivo assays and clinical data.
 - A high humanness score does not predict low immunogenicity on its own; fully human antibodies raise ADAs too, and aggregation and dosing route often matter more than sequence.
 
 ## What sequence alone cannot decide

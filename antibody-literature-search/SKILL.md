@@ -20,17 +20,22 @@ The discipline, in order:
 
 If a source cannot be resolved, write the claim as unsourced or drop it. Stating "I could not find a reference for this" is a correct answer.
 
+Database records carry provenance too. A record is cited with its accession plus, where the resource versions its data, the release or version and the date it was retrieved — `UniProt P04626 (retrieved 2026-11-13)`, `PDB 1N8Z`, `Thera-SAbDab trastuzumab`, `IEDB epitope ID 12345`. Database content changes between releases, so a bare accession with no version is not reproducible. Prefer the primary source (the deposited record) over a secondary summary of it.
+
 ## Pick the resource from the question
 
 | Question | Go to |
 |---|---|
 | What is published about this target, antibody or method? | Europe PMC or PubMed |
 | What is this protein, its domains, isoforms, PTMs, sequence? | UniProt |
+| Which epitopes are known or mapped for this antigen? | IEDB |
 | Is there a structure of this complex? | RCSB PDB, then SAbDab for antibody-specific annotation |
-| What is the sequence and format of a named therapeutic antibody? | Thera-SAbDab |
+| What is the sequence and format of a named therapeutic antibody? | Thera-SAbDab, IMGT/mAb-DB |
+| Has this antibody sequence been published or patented before? | PLAbDab |
 | Which germline genes and alleles exist? | IMGT/GENE-DB, OGRDB |
-| Which trials exist and what phase? | ClinicalTrials.gov, EU CTIS |
-| Which antibodies are approved or under review? | The Antibody Society's table |
+| Has this repertoire or clonotype been seen in a study? | OAS, iReceptor, VDJbase |
+| Which trials exist and what phase? | ClinicalTrials.gov, EU CTIS, WHO ICTRP |
+| Which antibodies are approved or under review? | The Antibody Society's table, YAbS |
 | Has this sequence been claimed in a patent? | Google Patents, Lens.org, patent sequence databases |
 | Which commercial antibodies target this protein, and are they validated? | antibody-reagent-selection |
 
