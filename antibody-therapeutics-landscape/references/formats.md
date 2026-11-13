@@ -75,17 +75,21 @@ Radioimmunoconjugates, immunocytokines, antibody-oligonucleotide conjugates, Fc-
 
 ## Decoding a drug name
 
-- Legacy `-mab` names carry a source infix: `-o-` mouse, `-xi-` chimeric, `-zu-` humanised, `-u-` fully human. WHO stopped assigning the source infix before the 2021 overhaul, so treat an infix as a hint about an older molecule, not a guarantee.
-- At its 73rd consultation in October 2021 the WHO INN Expert Group retired `-mab` for new antibodies — roughly 879 names had crowded the stem — and replaced it with four stems that encode format:
+A name encodes format (the stem) and, in older names, the source species (an infix). Both schemes are governed by the WHO INN Programme, and the definitions are the ones to quote rather than a remembered summary.
+
+- **Source infix (legacy).** `-o-` mouse, `-xi-` chimeric, `-zu-` humanised, `-u-` fully human. WHO dropped the source infix at its 64th consultation in April 2017, so an infix that is present dates the molecule to before 2017; a name assigned since carries no source information at all.
+- **Stem (from late 2021).** At its 73rd consultation in October 2021 the WHO INN Expert Group discontinued `-mab` for new antibodies — 879 INNs already carried the stem, which made new names hard to distinguish (Koch et al., *mAbs* 2022) — and split it into four stems encoding format ([WHO, 2021](https://www.who.int/publications/m/item/inn-21-531); revised [May 2022](https://www.who.int/publications/m/item/inn-22-542)):
 
 | Stem | Meaning |
 |---|---|
-| `-tug` | Monospecific full-length immunoglobulin, unmodified constant regions |
-| `-bart` | Monospecific full-length immunoglobulin with engineered constant regions |
-| `-ment` | Monospecific fragment of any kind (no Fc, or scFv-Fc constructs) |
-| `-mig` | Bispecific or multispecific immunoglobulin, any format |
+| `-tug` | Monospecific full-length immunoglobulin with unmodified constant regions (an "unmodified immunoglobulin"); covers natural, chimeric and humanized full-length antibodies of any class |
+| `-bart` | Monospecific full-length immunoglobulin with any engineered change in the constant regions (an "artificial immunoglobulin") — a hinge mutation, a new glycan site, altered FcRn or FcγR binding |
+| `-ment` | Monospecific immunoglobulin fragment of any kind not covered by `-tug` or `-bart`, including an scFv-Fc, provided at least one variable domain contributes to binding |
+| `-mig` | Bispecific or multispecific immunoglobulin, any format — full-length, fragment, engineered or not |
 
-- `-mig` takes precedence: a bispecific with an engineered Fc is a `-mig`, not a `-bart`. Fusion proteins containing an antibody variable domain fall outside the scheme and use `-afusp`.
-- Existing `-mab` names were kept, so the stem alone does not date a molecule reliably — only new assignments follow the 2021 rules.
-- The INN is the generic name; the brand name is separate and market-specific. In the US a biosimilar carries a four-letter suffix after the INN to distinguish it from the reference product.
+- `-mig` takes precedence: a bispecific with an engineered Fc is a `-mig`, not a `-bart`. Cross-reactivity from a single set of CDRs (for example bimekizumab) stays on the monospecific stem.
+- **Fusion proteins** fall outside the antibody stems and take the `-fusp` stem, with an infix recording the partner (`-a-` for an antibody part): tebentafusp (a TCR fused to an anti-CD3 scFv), valanafusp alfa, onfekafusp alfa. A construct made only of antibody domains stays on the antibody scheme, not `-fusp`.
+- **Target/action infixes** are still used and no longer imply the format: `-ta-` tumour, `-pru-` immunosuppressive, `-sto-` immunostimulatory (includes checkpoint inhibitors), `-ler-` allergen, `-ki-` cytokine and cytokine receptor, `-ci-` cardiovascular, `-ne-` neural, `-vi-` viral, `-ba-` bacterial, `-toxa-` toxin.
+- Existing `-mab` names were kept, so the stem alone does not date a molecule reliably — only names assigned from late 2021 follow the new rules.
+- The INN is the generic name; the brand name is separate and market-specific. In the US a biological product carries a four-letter suffix after the INN to distinguish related products (for example `-dkst`, `-abda`).
 - Decoding stops at format. Target, indication and ownership come from a lookup, not from the name.

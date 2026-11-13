@@ -7,7 +7,8 @@
 | **IMGT** | Structural alignment, fixed positions 1–128 per domain with gaps | The default for repertoire work. Gaps are inserted at conserved structural positions, so position numbers are comparable across sequences of different lengths. |
 | **Kabat** | Sequence variability, historical | Still dominant in the therapeutic and patent literature. Uses insertion codes (`H35A`, `H52A`, `L27A`) where sequences are longer than the reference. |
 | **Chothia** | Structural loops | Like Kabat but with CDR-H1 and CDR-H2 shifted to match the structural loops. |
-| **Martin** (extended Chothia) | Structural, corrected framework alignment | Common in structure-based work. |
+| **Martin** (AbM, extended Chothia) | Structural, corrected framework alignment | Common in structure-based work; extends CDR-H1 to 26–35 and trims CDR-H2. |
+| **Contact** | Structural contacts between antibody and antigen | The widest of the common CDR definitions; used where the question is which residues touch antigen. |
 | **AHo** | Structural, 149 positions | Designed for structural alignment across all immunoglobulin domains. |
 | **EU** | Fc and constant region | What Fc engineering mutations are quoted in (`N297`, `L234A/L235A`, `M428L/N434S`). Separate from the variable-domain schemes — do not mix them in one coordinate statement. |
 
@@ -27,21 +28,21 @@ Boundaries as commonly implemented. Verify against the output of the tool actual
 | CDR3 | 105–117 |
 | FR4 | 118–128 |
 
-**Kabat, Chothia, Martin** (heavy chain, in their own numbering):
+**Kabat, Chothia, Martin/AbM, Contact** (heavy chain, in each scheme's own numbering):
 
-| Region | Kabat | Chothia | Martin |
-|---|---|---|---|
-| CDR-H1 | 31–35B | 26–32 | 26–35 |
-| CDR-H2 | 50–65 | 52–56 | 50–58 |
-| CDR-H3 | 95–102 | 95–102 | 95–102 |
+| Region | Kabat | Chothia | Martin / AbM | Contact |
+|---|---|---|---|---|
+| CDR-H1 | 31–35B | 26–32 | 26–35 | 30–35 |
+| CDR-H2 | 50–65 | 52–56 | 50–58 | 47–58 |
+| CDR-H3 | 95–102 | 95–102 | 95–102 | 93–101 |
 
-**Light chain** is 24–34, 50–56, 89–97 in Kabat, Chothia and Martin alike.
+**Light chain** is 24–34, 50–56, 89–97 in Kabat, Chothia and Martin alike; Contact is wider again at 30–36, 46–55, 89–96. Boundary tables here follow the definitions implemented by ANARCI and abYsis (Lefranc et al., *Dev. Comp. Immunol.* 2003; Zhu et al., *Protein Eng. Des. Sel.* 2025); a paper may use a different interpretation of the same scheme name, so verify against the tool's own output.
 
 Consequences worth internalising:
 
 - IMGT CDR-H1 and CDR-H2 are longer than the Chothia equivalents; a "CDR1 length" statistic is not portable between schemes.
-- CDR-H3 shares the same endpoints across Kabat, Chothia and Martin, which is why CDR-H3 length is the one region length people compare loosely — but IMGT CDR3 includes the conserved flanking positions 105 and 117, so IMGT CDR3 lengths run two residues longer than junction-minus-anchors definitions.
-- The **junction** in AIRR terms spans the conserved Cys to the conserved Trp/Phe inclusive, so `junction_aa` is CDR3 plus two residues. Mixing `junction_aa` and `cdr3_aa` in one analysis is a common and silent bug.
+- CDR-H3 shares the same endpoints across Kabat, Chothia and Martin, which is why CDR-H3 length is the one region length people compare loosely.
+- The **IMGT CDR3-IMGT** of a rearranged domain is positions 105–117 and *excludes* the conserved 2nd-Cys at 104 and the J-Trp/Phe at 118. The **AIRR junction** spans 104 to 118 inclusive, so `junction_aa` is exactly two residues longer than the IMGT CDR3 it contains (13 CDR3 positions → 15 junction positions is the reference case). Mixing `junction_aa` and `cdr3_aa` in one length distribution or clonotype key is a common and silent bug.
 - **North** CDR definitions (from clustered loop conformations) are wider again; if a paper's CDR lengths look unfamiliar, check whether it used North.
 
 ## Insertion codes and gaps

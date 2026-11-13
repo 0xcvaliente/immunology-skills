@@ -19,10 +19,12 @@ Where to look, by question:
 | Question | Source |
 |---|---|
 | Approved or under regulatory review | [The Antibody Society's table](https://www.antibodysociety.org/resources/approved-antibodies/) (no login), then FDA Drugs@FDA / Purple Book, EMA medicine pages |
-| Near-term approvals and pipeline sweep | the current year's "Antibodies to watch" review in *mAbs* |
-| Trials, phase, enrolment | [ClinicalTrials.gov](https://clinicaltrials.gov) (API v2), [EU CTIS](https://euclinicaltrials.eu) |
+| Any antibody therapeutic, approved or not | [YAbS](https://db.antibodysociety.org/), the Antibody Society's searchable therapeutics database (over 2,900 molecules) |
+| Near-term approvals and pipeline sweep | the current year's "Antibodies to watch" review in *mAbs* (for example Crescioli et al., 2026) |
+| Trials, phase, enrolment | [ClinicalTrials.gov](https://clinicaltrials.gov) (API v2), [EU CTIS](https://euclinicaltrials.eu); add [WHO ICTRP](https://www.who.int/tools/clinical-trials-registry-platform) for a global sweep beyond US/EU registries |
+| What a name's stem or infix means | [WHO INN stem book](https://www.who.int/teams/health-product-and-policy-standards/inn/stembook) and the current mAb nomenclature scheme |
 | Who owns it, what it costs, what is next | the company's own investor relations deck and annual report |
-| Structures and therapeutic sequences | SAbDab and Thera-SAbDab (see antibody-literature-search) |
+| Structures and therapeutic sequences | SAbDab, Thera-SAbDab and IMGT/mAb-DB (see antibody-literature-search) |
 
 When no lookup is possible in the session, name the facts left unverified instead of supplying plausible ones. A remembered approval count is wrong often enough to be worthless, and a fabricated one is worse.
 

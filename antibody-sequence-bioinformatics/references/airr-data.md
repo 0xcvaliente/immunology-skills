@@ -4,7 +4,7 @@
 
 The AIRR Community Rearrangement schema is the interchange format for annotated receptor sequences: a tab-delimited file with a required header, one row per rearrangement, and defined field names. IgBLAST, MiXCR, Change-O, scirpy and immunarch all read or write it, so normalising to AIRR early means downstream code faces one schema instead of five.
 
-The authoritative field list lives at `https://docs.airr-community.org` — read the version matching the data rather than caching the list, since fields are added between releases. Pin the schema version in the project and record it with the data.
+The authoritative field list lives at `https://docs.airr-community.org` — read the version matching the data rather than caching the list, since fields are added between releases. The current release is **AIRR Standards v2.0.0** (with v1.6.1 as the previous stable line); the schema moved on from v1.x with reorganised single-cell, clone and packaging structures, so a file written for one major version is not silently interchangeable with the other. Pin the schema version in the project and record it with the data.
 
 ## Fields that carry the data
 
@@ -22,6 +22,10 @@ Traps in this schema specifically:
 ## Germline references
 
 Record the reference set and its version with every annotated dataset: **IMGT/GENE-DB** is the conventional source, **OGRDB** (AIRR Community) publishes curated and inferred germline sets with citable versions, and species beyond human and mouse often need a set built for that organism. Assignments from different reference sets are not comparable, and a mutation-frequency number is only meaningful relative to its reference.
+
+## Where the data lives
+
+Annotated repertoire data is exchanged through the AIRR Data Commons rather than as loose files. **iReceptor** (`https://gateway.ireceptor.org`) federates the member repositories and queries them through the ADC API; **OAS** (`https://opig.stats.ox.ac.uk/webapps/oas/`) serves bulk background repertoires; **VDJbase** (`https://vdjbase.org`) curates gene and allele variation across individuals; **VDJServer** (`https://vdjserver.org`) is an AIRR-aware analysis and deposition service. Raw reads go to the **NCBI SRA** or **ENA** with MiAIRR-compliant metadata, and every accession cited should resolve.
 
 ## QC checklist
 

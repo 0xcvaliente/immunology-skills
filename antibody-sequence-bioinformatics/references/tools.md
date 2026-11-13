@@ -8,7 +8,7 @@ Check what is already installed and what the project pins before adding anything
 |---|---|
 | Number a variable domain, extract CDRs, detect chain type | ANARCI, or **abnumber** for a friendlier Python API |
 | Germline V(D)J assignment from nucleotide reads | IgBLAST (NCBI), or IMGT/V-QUEST for small interactive sets |
-| Raw sequencing reads to annotated repertoire | MiXCR (licence terms apply to commercial use), or pRESTO + IgBLAST + Change-O from Immcantation |
+| Raw sequencing reads to annotated repertoire | MiXCR (licence terms apply to commercial use), pRESTO + IgBLAST + Change-O from Immcantation, or the nf-core **airrflow** Nextflow pipeline when a reproducible, containerised run matters |
 | Clonal grouping, lineage, mutation analysis | Change-O, SHazaM, Dowser (Immcantation, R) |
 | Single-cell BCR with transcriptome | scirpy (Python), Dandelion (Python), immunarch or scRepertoire (R) |
 | Repertoire statistics and diversity | immunarch (R), alakazam (R) |

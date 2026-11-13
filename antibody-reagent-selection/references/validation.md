@@ -43,8 +43,11 @@ Phospho-specific and other PTM antibodies carry an extra bar: signal must appear
 
 Register and cite antibodies by **RRID** from the Antibody Registry (`https://antibodyregistry.org`). An RRID identifies the exact reagent across vendors and resellers, which a catalogue number does not, and most journals now expect it in the methods. When assembling a method section, give target, host, clonality, clone, vendor, catalogue number, RRID, dilution and application for every antibody.
 
+Cell lines carry RRIDs too (`RRID:CVCL_...`), assigned through **Cellosaurus** (`https://www.cellosaurus.org`). Because knockout and antigen-negative controls now carry much of the specificity argument, a method section should identify each control line by name and RRID, and note whether the line is authenticated and what its knockout status is — a misidentified or leaky line silently invalidates the control. The RRID portal (`https://rrid.site`) resolves identifiers across antibodies, cell lines, organisms and software.
+
 ## Third-party and community evidence
 
 - Independent characterisation initiatives (for example YCharOS, which tests commercial antibodies against knockout controls and publishes the results openly) are worth a search before buying; where such a report exists for your target, it outranks all vendor material.
 - Reviews on vendor sites are weak evidence; reviews on independent reagent databases are better; a paper's methods section stating the clone and showing controls is better still.
+- **CiteAb** (`https://www.citeab.com`) ranks reagents and cell lines by how often they are cited, which surfaces clones with real published use rather than vendor-only figures — but confirm the citing paper actually used the clone.
 - The Human Protein Atlas publishes its own antibody reliability scores alongside staining images, which is useful for IHC targets.
