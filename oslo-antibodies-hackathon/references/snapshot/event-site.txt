@@ -1,0 +1,165 @@
+AI × Antibodies
+ PartnersChallengeScheduleFAQ
+ Register
+ Participant guide
+ ONE-DAY HACKATHON · OSLO
+AI ×
+Antibodies
+Predict. Design. Engineer.
+Push the limits of computational antibody design.
+Date14 November 2026
+TimeFrom 09:00
+PlaceOslo, Norway
+ Register now →
+Partners
+This hackathon is brought to you by
+Main sponsor
+Apheris
+Prize fund
+Silver sponsor
+OpenFold
+Prize fund
+Supporting Partner
+Oslo Cancer Cluster
+Event support and logistics
+Venue
+BI Startup Village
+Our host
+AI credits
+Anthropic
+Claude Max credits
+Compute Resources
+Tenstorrent x ai&
+Japanfold credits
+Compute Resources
+Nebius
+NVIDIA GPUs
+Lab validation
+Adaptyv Bio
+Experimental validation
+Evidence base
+Amass
+Scientific intelligence
+Main organizer
+Nucleate Norway
+Co-organizer
+Girls Who ML
+Event design, logistics
+Co-organizer
+Yogutide
+Sponsor relations
+Co-organizer
+Tekna Biotek
+Community and hospitality
+More partners coming soon.
+The challenge
+From prediction to real-world therapeutic development
+Running a protein model is easy — AlphaFold and OpenFold are a download away. Turning computational predictions into something a drug discovery team would trust is hard.
+Build an AI tool for a real antibody-engineering challenge and see how far you can take it in just one day.
+Who it's for
+Biologist, coder, entrepreneur, or none of the above — if you want to help shape modern medicine, you're welcome here.
+Prizes
+What the winners take home
+3,000 USDPrize money for the winning team(s)
+Lab validationValued at 20K USD for winning sequences
+PublicationPossibility of a scientific publication
+Schedule · November 14
+One focused day
+Preliminary and subject to slight changes.
+09:00
+Registration · light breakfast · team adjustments (if necessary)
+09:30
+Opening: welcome, task & mentor intro
+10:00
+Focused work starts
+12:00
+Lunch available (pick & eat)
+17:00
+Pitch & presentation prep
+18:00
+Pitch submission deadline · snacks · tech setup
+18:05
+Presentations begin
+19:00
+Presentations end · jury deliberates
+19:30
+Award ceremony · mingling (dinner)
+Judges & Mentors
+Biotech, structural biology, ML and entrepreneurship
+VG
+Judge & Mentor
+Victor Greiff
+Prof., Systems Immunology, UiO · CTO, IMPRINT
+MF
+Judge
+Monica Fernandez Quintero
+Assoc. Prof., UCPH, NIVI Research
+LC
+Judge & Mentor
+Leonardo Castorina
+Sr. ML Engineer, Apheris
+JA
+Judge
+Jan Terje Andersen
+Prof., Biomedical Innovation, UiO · CEO, Superio Bio
+DB
+Judge & Mentor
+Daria Balashova
+AI/ML Solutions Architect, Nebius
+AB
+Judge
+Joachim Paasche
+Venture Partner, Aleap
+AB
+Mentor
+Egor Marin
+ML Engineer, Apheris
+AS
+Mentor
+Arseniy Sokolov
+Sr. HCLS Solutions Architect, Nebius
+More judges and mentors coming soon.
+Venue
+BI Startup Village
+AddressBI Norwegian Business School, Nydalsveien 37, 0484 Oslo
+DateSaturday, 14 November 2026
+Doors08:30 — breakfast included
+ Open in Google Maps ↗
+FAQ
+Good questions
+ Who can participate?
+Students, researchers, and professionals interested in biotechnology and entrepreneurship applied to biology. We welcome participants from all backgrounds and disciplines — great ideas happen when different areas of expertise come together.
+ Do I need to know programming, bioinformatics, or biology?
+No! Preparation materials and mentors will help you understand the challenges and contribute meaningfully. You're welcome to use AI and other resources, and we'll encourage teams to combine expertise such as biology and computer science.
+ Do I need a team? What is the maximum team size?
+No. Come with a team or come alone — we'll help you find one, aiming for a mix of skills and backgrounds. Maximum team size is 5 people.
+ What are the prizes?
+Prize money of 3,000 USD for the winning team(s), plus:
+Experimental validation: winning sequences expressed and tested in vitro by a partner lab, with a full lab report and characterization data
+Scientific publication: the possibility to publish your results
+Pitch your project to venture capitalists
+Have your project featured in partner media
+ How are projects judged?
+A judge runs your skill on a case your team hasn't seen. We use two scientific and two product criteria:
+Judgment (40%) — clear reasoning behind the molecules you chose.
+Execution (20%) — a reproducible pipeline in a GitHub repo.
+User fit (20%) — what your design is for, and who needs it.
+Path to value (20%) — a credible route to real use, for the molecule or the method.
+ What do I need to submit at the end of the hackathon?
+A pitch/presentation and a GitHub repository link with the materials created during the hackathon. A working prototype strengthens your submission.
+ What are the rules on pre-existing work?
+All project outputs and repositories must be created during the hackathon. Prior ideas, research or papers may inspire you, but if your project builds on a pre-existing startup or business idea, you must disclose it to the organizers.
+ Who owns the results?
+Designs submitted for experimental validation are tested by Adaptyv, and the results are published on Proteinbase under the open ODC-BY license. Published data includes the sequence, predicted structure, design method, measurements, and your name and team name. By submitting, you give Anthropic and Adaptyv permission to use and publish your design, but they don't become its owners.
+See the full competition terms for details.
+ Will food be provided? What about dietary needs?
+Yes — coffee, light breakfast and lunch. Dinner details will follow closer to the event. Tell us about allergies or dietary requirements in the registration form.
+ What should I bring?
+Your laptop, charger, and personal items for a full day. We provide meals, refreshments, and access to computing resources.
+ Is accommodation provided?
+Unfortunately not. It's a one-day event, so please arrange your own accommodation if needed. We are aware this may limit participation for people traveling from further away, and we're sorry for that.
+Build something a drug discovery team would trust.
+14 November 2026 · BI Startup Village · All backgrounds welcome
+ Register now →
+Want to become a sponsor? Contact linaw@nucleate.org
+ AI × Antibodies Hackathon · Oslo 2026
