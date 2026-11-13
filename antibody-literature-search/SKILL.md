@@ -1,6 +1,6 @@
 ---
 name: antibody-literature-search
-description: Find and summarise antibody and immunology literature and public database records - papers on a target, antibody or method, the originator publication for a named mAb, UniProt entries, PDB and SAbDab structures, Thera-SAbDab therapeutic sequences, IMGT germlines, clinical trials, patent sequences. Use when asked what is known or published about an antigen, antibody, epitope or assay, to look up an accession, PDB ID, PMID or DOI, to summarise a paper, or to assemble evidence on an antibody target. Every identifier is resolved against the source before it is written. Use antibody-therapeutics-landscape for industry and format context, antibody-reagent-selection to choose a commercial antibody, antibody-sequence-bioinformatics to work with the sequences retrieved.
+description: Find and summarise antibody and immunology literature and public database records - papers on a target, antibody or method, the originator publication for a named mAb, UniProt entries, PDB, SAbDab and SAbDab-nano structures, Thera-SAbDab therapeutic sequences, IMGT germlines, clinical trials, patent sequences, and measured design data in Proteinbase. Use when asked what is known or published about an antigen, antibody, epitope or assay, to look up an accession, PDB ID, PMID or DOI, to summarise a paper, to profile a target before designing against it (a target dossier covering construct, structures, known binders and epitopes, orthologs, accessibility and clinical context), or to assemble evidence on an antibody target. Every identifier is resolved against the source before it is written. Use antibody-therapeutics-landscape for industry and format context, antibody-reagent-selection to choose a commercial antibody, antibody-sequence-bioinformatics to work with the sequences retrieved, antibody-binder-design to act on a dossier.
 ---
 
 # Antibody literature and database search
@@ -29,7 +29,10 @@ Database records carry provenance too. A record is cited with its accession plus
 | What is published about this target, antibody or method? | Europe PMC or PubMed |
 | What is this protein, its domains, isoforms, PTMs, sequence? | UniProt |
 | Which epitopes are known or mapped for this antigen? | IEDB |
-| Is there a structure of this complex? | RCSB PDB, then SAbDab for antibody-specific annotation |
+| Is there a structure of this complex? | RCSB PDB, then SAbDab (SAbDab-nano for VHHs) for antibody-specific annotation |
+| What do I need to know about this target before designing against it? | the target dossier: [references/target-dossier.md](references/target-dossier.md) |
+| Which designed binders were tested for this target or by this method, and what happened? | Proteinbase |
+| What mutational binding or developability data exist to calibrate against? | SKEMPI 2.0, AB-Bind, Ginkgo Datapoints |
 | What is the sequence and format of a named therapeutic antibody? | Thera-SAbDab, IMGT/mAb-DB |
 | Has this antibody sequence been published or patented before? | PLAbDab |
 | Which germline genes and alleles exist? | IMGT/GENE-DB, OGRDB |

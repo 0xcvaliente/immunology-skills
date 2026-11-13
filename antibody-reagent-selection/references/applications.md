@@ -50,3 +50,15 @@ Each application asks a different question of the same molecule. An antibody is 
 
 - Every antibody must be validated in the panel, not alone: steric interference, metal or fluorophore conjugation altering binding, and sequential-stripping damage all appear only in the full panel.
 - Conjugation of a carrier-free antibody is its own optimisation; conjugation can and does kill binding.
+
+## SPR and BLI binding kinetics
+
+Surface plasmon resonance and biolayer interferometry measure a binder's association and dissociation in real time and fit them to a KD. They are the usual readout when a designed or selected binder is tested, so knowing what a reported number rests on matters as much as the number.
+
+- **What a KD means here.** `KD = koff / kon`, from a fitted sensorgram. Two binders with the same KD can behave differently in vivo if one dissociates much more slowly. A KD without the fit, the concentration series and the orientation is not comparable to another KD.
+- **Orientation decides valency.** Which partner is immobilised and which is in solution changes the result. A bivalent molecule (an IgG, or a dimeric fusion) on the surface against a monovalent analyte reports intrinsic affinity; the reverse, a bivalent analyte over a surface dense in target, reports avidity and looks much tighter. In the Anthropic × Adaptyv competition the design is immobilised and the target is in solution, and every design is measured under each condition the challenge sets, such as two pH values and two species.
+- **Defining "binds".** The competition's EGFR challenge counted a design as binding in a condition when its sensorgram gave a fittable curve and a KD or, where the curve could not be fitted, when the association shift exceeded 300% over the negative control; otherwise it was recorded as no detectable binding. Check the equivalent rule in your task; it fixes what the experiment can distinguish.
+- **Artefacts to rule out.** Binding to the capture tag or the surface (the competition states that binding to the target's purification tags or the design's capture tag does not count), non-specific sticking (a negative-control binder and a reference surface), mass-transport limitation, rebinding, incomplete regeneration, and aggregated analyte.
+- **Controls.** A known binder and a known non-binder in the same run, a blank reference, and a concentration series spanning the KD.
+- **Conditions are part of the result.** pH, buffer and temperature change binding; a pH-selective claim needs measurements at both pH values and a statement of the buffer.
+

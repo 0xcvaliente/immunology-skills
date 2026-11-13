@@ -32,15 +32,34 @@ Stable entry points. Endpoints drift, so when a call fails, fetch the resource's
 
 ## Structures
 
-**RCSB PDB** — entry data `https://data.rcsb.org/rest/v1/core/entry/<ID>`, search via `https://search.rcsb.org/rcsbsearch/v2/query` (JSON query body), coordinates `https://files.rcsb.org/download/<ID>.cif`. **PDBe** at EBI mirrors the archive with its own API.
+**RCSB PDB** — entry data `https://data.rcsb.org/rest/v1/core/entry/<ID>`, coordinates `https://files.rcsb.org/download/<ID>.cif` (or `.pdb`), sequences of every chain `https://www.rcsb.org/fasta/entry/<ID>`. Search is a POST of a JSON query to `https://search.rcsb.org/rcsbsearch/v2/query`; paging goes under `request_options.paginate` (not `paging`, which fails schema validation):
 
-**SAbDab** — `https://opig.stats.ox.ac.uk/webapps/sabdab-sabpred/sabdab`. Every antibody structure in the PDB, re-annotated consistently: chain assignment, numbering, CDR definitions, antigen, species, affinity where reported. Downloadable as a summary table, CC-BY 4.0. Use this instead of filtering the PDB by hand.
+```bash
+curl -s -X POST https://search.rcsb.org/rcsbsearch/v2/query -H 'Content-Type: application/json' \
+  -d '{"query":{"type":"terminal","service":"full_text","parameters":{"value":"nanobody"}},"return_type":"entry","request_options":{"paginate":{"start":0,"rows":25}}}'
+```
+
+**PDBe** at EBI mirrors the archive with its own API.
+
+**SAbDab** — `https://opig.stats.ox.ac.uk/webapps/sabdab-sabpred/sabdab`. Every antibody structure in the PDB, re-annotated consistently: chain assignment, numbering, CDR definitions, antigen, species, affinity where reported. Downloadable as a summary table, CC-BY 4.0. Use this instead of filtering the PDB by hand. Its nanobody subset, **SAbDab-nano**, is the source of VHH–antigen complexes for controls and calibration.
 
 **Thera-SAbDab** — `https://opig.stats.ox.ac.uk/webapps/sabdab-sabpred/therasabdab`. Therapeutic antibodies with their sequences, format, target and development stage, linked to structures where they exist. The route from a drug name to its actual sequence.
 
-**OAS (Observed Antibody Space)** — `https://opig.stats.ox.ac.uk/webapps/oas/`. Billions of repertoire sequences from published studies, for background distributions and germline context.
-
 OPIG publishes successor tools and occasionally reorganises these webapps; if a path 404s, start at `https://opig.stats.ox.ac.uk/webapps` and take the current link.
+
+## Measured designs and binding data
+
+What the field has actually measured, which is what a calibration set should be made of.
+
+**Proteinbase** — `https://proteinbase.com` (also served at `https://design.adaptyvbio.com`). Adaptyv's open database of protein designs with wet-lab results, organised by protein, collection, design method, target and competition. Each design method page shows how many designs were generated and how many tested; the Anthropic × Adaptyv competition results are published here, negative results included, under ODC-BY. Use it to find measured positives and negatives for a target or a method, and to see how a method has performed in practice rather than in its paper. Reference paper for an earlier crowdsourced round: Crowdsourced Protein Design: Lessons From the Adaptyv EGFR Binder Competition, bioRxiv 2025, [doi:10.1101/2025.04.17.648362](https://doi.org/10.1101/2025.04.17.648362).
+
+**SKEMPI 2.0** — `https://life.bsc.es/pid/skempi2`. Experimental changes in binding free energy on mutation, protein–protein complexes.
+
+**AB-Bind** — `https://github.com/sarahsirin/AB-Bind-Database`. Antibody-specific mutational binding data.
+
+**Ginkgo Datapoints** — `https://datapoints.ginkgo.bio/dataset-access`. Developability datasets, including sets measured on VHHs.
+
+**Practical guides.** [How to Design Antibodies](https://www.asimov.press/p/antibody-design) (Asimov Press, 11 March 2026): five stages from target choice to lab testing with open-source tools. Adaptyv's post on [novelty](https://www.adaptyvbio.com/blog/novelty) is the reference the competition FAQ gives for its novelty rule.
 
 ## Germline references
 

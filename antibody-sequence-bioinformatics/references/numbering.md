@@ -44,12 +44,33 @@ Consequences worth internalising:
 - CDR-H3 shares the same endpoints across Kabat, Chothia and Martin, which is why CDR-H3 length is the one region length people compare loosely.
 - The **IMGT CDR3-IMGT** of a rearranged domain is positions 105–117 and *excludes* the conserved 2nd-Cys at 104 and the J-Trp/Phe at 118. The **AIRR junction** spans 104 to 118 inclusive, so `junction_aa` is exactly two residues longer than the IMGT CDR3 it contains (13 CDR3 positions → 15 junction positions is the reference case). Mixing `junction_aa` and `cdr3_aa` in one length distribution or clonotype key is a common and silent bug.
 - **North** CDR definitions (from clustered loop conformations) are wider again; if a paper's CDR lengths look unfamiliar, check whether it used North.
+- A **VHH** is numbered as a heavy-chain variable domain, with the same IMGT ranges. Its CDR3 is often long, so the IMGT CDR3 carries insertion positions (`111A`, `112A`, ...) beyond the nominal 13 slots.
 
 ## Insertion codes and gaps
 
 - Kabat-family schemes extend positions with letters (`100A`, `100B`, …) for longer loops. Sort order is numeric-then-letter, which plain string sorting gets wrong.
 - IMGT inserts gaps rather than letters, so an IMGT-numbered sequence has fixed positions and may contain gap characters. Stripping gaps destroys the alignment — keep the gapped form for position lookups and a separate ungapped sequence for identity calculations.
 - A numbered sequence is a mapping from positions to residues, not a string. Represent it as a dict or an ordered list of `(position, insertion_code, residue)` and the index bugs disappear.
+
+## IMGT positions are not residue numbers in a structure file
+
+A PDB or mmCIF file numbers residues in its own way (here, author numbering): usually 1, 2, 3 ... along the chain, with gaps where residues are unresolved and sometimes insertion codes. IMGT numbering has fixed slots with gaps and insertion positions. The two agree on nothing except by accident, and a contig, a hotspot list or a mutation (`N55A`) must be written in the file's numbering.
+
+Worked example, PDB 1ZVY chain A (a dromedary VHH bound to hen lysozyme), IMGT regions placed by `scripts/cdr_contig.py` and checked against ANARCII:
+
+| Region | IMGT positions | Residues | Residue numbers in the file |
+|---|---|---|---|
+| CDR1 | 27-38 | `GSTDSIEY` | A26-A33 |
+| CDR2 | 56-65 | `LYTHTGNT` | A51-A58 |
+| CDR3 | 105-117 (plus insertion positions) | `GATRKYVPVRFALDQSSYDY` (20 residues) | A97-A116 |
+| FR4 | 118-128 | `WGQGTQVTV` (resolved part) | A117-A125 |
+
+Two details that cost time if missed: residue A1 is excluded from the contig because its backbone N is absent in the file, and residues 126-136 (the end of FR4 and a tag) are unresolved, which is why a FR4 range stops at A125. The command that produced the table and a contig that regenerates CDR3 at its native length:
+
+```bash
+python3 scripts/cdr_contig.py 1ZVY.cif --chain A --target-chain B
+# contig (guide style):  B1-129, /0, A2-96, 20, A117-125
+```
 
 ## Converting between schemes
 
