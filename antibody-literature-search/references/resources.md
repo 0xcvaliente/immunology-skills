@@ -59,6 +59,8 @@ What the field has actually measured, which is what a calibration set should be 
 
 **Ginkgo Datapoints** — `https://datapoints.ginkgo.bio/dataset-access`. Developability datasets, including sets measured on VHHs.
 
+**AbBiBench** — [arXiv:2506.04235](https://arxiv.org/abs/2506.04235) (preprint, not peer reviewed). A benchmark for antibody affinity maturation and design: over 184,000 measured mutants of 14 antibodies against 9 antigens, scored against 15 protein models by how well model likelihood tracks measured affinity. Dataset and code are linked from the arXiv page. Useful for calibrating which family of model to trust for mutation scoring (antibody-engineering).
+
 **Practical guides.** [How to Design Antibodies](https://www.asimov.press/p/antibody-design) (Asimov Press, 11 March 2026): five stages from target choice to lab testing with open-source tools. Adaptyv's post on [novelty](https://www.adaptyvbio.com/blog/novelty) is the reference the competition FAQ gives for its novelty rule.
 
 ## Germline references
@@ -70,6 +72,10 @@ What the field has actually measured, which is what a calibration set should be 
 ## Repertoire and sequence repositories
 
 Where annotated repertoire data lives, and where to deposit it. All speak the AIRR Rearrangement schema (see antibody-sequence-bioinformatics).
+
+**AbDb** — `http://www.abybank.org/abdb/`. Antibody structure database derived from the PDB, with each entry split into antibody chains and antigen ([doi:10.1093/database/bay040](https://doi.org/10.1093/database/bay040)).
+
+**CoV-AbDab** — `https://opig.stats.ox.ac.uk/webapps/covabdab/`. Coronavirus-binding antibodies with their sequences, structures where known, and binding or neutralisation data ([doi:10.1093/bioinformatics/btaa739](https://doi.org/10.1093/bioinformatics/btaa739)).
 
 **OAS (Observed Antibody Space)** — `https://opig.stats.ox.ac.uk/webapps/oas/`. Billions of repertoire sequences from published studies, for background distributions and germline context.
 

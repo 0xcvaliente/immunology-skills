@@ -13,7 +13,7 @@ How an agent should run the hackathon with these skills. The skills hold the dom
 Each step ends when its *done* line is true.
 
 1. **Know the time.** Run `date` and compare it with the schedule in [event-facts.md](event-facts.md). *Done:* you can say which phase of [day-plan.md](day-plan.md) it is and what the next checkpoint is.
-2. **Check the skills are installed.** `ls ~/.claude/skills | grep -E '^(antibody|oslo)'` lists six names. If not, ask the human to run `./install.sh` from the skills clone; do not copy files by hand. *Done:* six names listed.
+2. **Check the skills are installed.** `ls ~/.claude/skills | grep -E '^(antibody|oslo)'` lists seven names. If not, ask the human to run `./install.sh` from the skills clone; do not copy files by hand. *Done:* seven names listed.
 3. **Re-sync with the organisers' pages.** `python3 ~/.claude/skills/oslo-antibodies-hackathon/scripts/read_guide.py --diff`. *Done:* it prints "no change since the snapshot", or you have shown the human each changed item with its live text.
 4. **Find the right repository** (next section). *Done:* the team repository's path is known and is not the skills clone, or the human has said there is none yet and where to create it.
 5. **Ask once whether the prepared tooling was disclosed** to the organisers and what they said. *Done:* the answer is in `decision-log.md`, or "not yet asked" is logged and you raise it again at the next checkpoint.
@@ -37,6 +37,7 @@ The event rule is that project outputs and repositories are created during the h
 | When | Skill | First action |
 |---|---|---|
 | The task text arrives | antibody-binder-design | Write `task.md` (step 0) and list every unclear field |
+| The task is to improve a given antibody (affinity, stability, humanisation, developability) | antibody-engineering | Step 0: the goal and what must not change |
 | The target is unfamiliar | antibody-literature-search | Build the target dossier (`references/target-dossier.md`) |
 | A sequence, CDR, contig or structure question | antibody-sequence-bioinformatics | `vhh_qc.py`, `cdr_contig.py`, `interface_contacts.py` |
 | Ranking, selecting, preparing the submission | antibody-binder-design | `rank_designs.py`, then `check_submission.py` |

@@ -11,15 +11,19 @@ Check what is already installed and what the project pins before adding anything
 | Map CDRs to a structure's residue numbers; build a loop-redesign contig | `scripts/cdr_contig.py` |
 | Where does a predicted complex touch the target | `scripts/interface_contacts.py` |
 | Germline V(D)J assignment from nucleotide reads | IgBLAST (NCBI), or IMGT/V-QUEST for small interactive sets |
+| Closest germline for one protein V domain | IMGT/DomainGapAlign (web) |
+| Humanisation and humanness scoring | BioPhi (OASis humanness score; Sapiens antibody language model), web app and public code |
 | Raw sequencing reads to annotated repertoire | MiXCR (licence terms apply to commercial use), pRESTO + IgBLAST + Change-O from Immcantation, or the nf-core **airrflow** Nextflow pipeline when a reproducible, containerised run matters |
 | Clonal grouping, lineage, mutation analysis | Change-O, SHazaM, Dowser (Immcantation, R) |
 | Single-cell BCR with transcriptome | scirpy (Python), Dandelion (Python), immunarch or scRepertoire (R) |
 | Repertoire statistics and diversity | immunarch (R), alakazam (R) |
 | Read and write AIRR files with schema validation | the `airr` Python or R package |
 | General sequence parsing and translation | Biopython, biotite |
-| Structure prediction of the binder alone | NanoBodyBuilder2 and ABodyBuilder3 / ImmuneBuilder (OPIG), or an AlphaFold-family model; complexes need a co-folding model (see antibody-binder-design) |
+| Structure prediction of the binder alone | NanoBodyBuilder2 and ABodyBuilder3 / ImmuneBuilder (OPIG), IgFold, or an AlphaFold-family model; complexes need a co-folding model (see antibody-binder-design) |
 | Developability flags from sequence or structure | TAP (Therapeutic Antibody Profiler) for conventional antibodies, **TNP** (Therapeutic Nanobody Profiler) for VHHs, both OPIG, plus the motif checks in `liabilities.md` |
 | Background repertoire context | OAS (Observed Antibody Space) |
+
+Tools for the engineering stages (docking, mutation scoring by physics, inverse folding and language models, generative redesign, immunogenicity prediction) are in antibody-engineering `references/toolkit.md`.
 
 OPIG periodically replaces its tools with successors (ANARCI has newer siblings); start from `https://opig.stats.ox.ac.uk/webapps` and use the current one rather than pinning to a name from memory.
 
