@@ -5,7 +5,7 @@ and CDR contribution from one or many complex structures (PDB or mmCIF).
     interface_contacts.py design.cif --binder H --target A --hotspots A45,A67,A89
     interface_contacts.py out/*.cif --binder B --target A --hotspots A45,A67 > contacts.tsv   # one row per file
 
-A contact is a heavy-atom pair closer than --cutoff (default 4.5 A).  This answers the
+A contact is a heavy-atom pair within --cutoff (distance <= cutoff, default 4.5 A).  This answers the
 questions a confidence score cannot: does the design sit on the intended epitope
 (hotspot coverage), is the interface made by the CDRs or by framework (a framework-only
 interface is a warning sign for a designed VHH), and is it plausibly sized.  It does not
@@ -36,7 +36,7 @@ def heavy_atoms(res):
 
 
 def contact_pairs(binder_res, target_res, cutoff):
-    """Residue pairs (i, j) with a heavy-atom pair closer than cutoff, found with a cell grid."""
+    """Residue pairs (i, j) with a heavy-atom pair at distance <= cutoff, found with a cell grid."""
     cell = cutoff
     grid = {}
     for j, r in enumerate(target_res):
@@ -51,7 +51,7 @@ def contact_pairs(binder_res, target_res, cutoff):
                 for dy in (-1, 0, 1):
                     for dz in (-1, 0, 1):
                         for j, a, b, c in grid.get((cx + dx, cy + dy, cz + dz), ()):
-                            if (x - a) ** 2 + (y - b) ** 2 + (z - c) ** 2 < cut2:
+                            if (x - a) ** 2 + (y - b) ** 2 + (z - c) ** 2 <= cut2:
                                 pairs.setdefault((i, j), 0)
                                 pairs[(i, j)] += 1
                                 atom_pairs += 1

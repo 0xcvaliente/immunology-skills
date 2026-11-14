@@ -232,6 +232,14 @@ class InterfaceContacts(unittest.TestCase):
         self.assertAlmostEqual(near["hotspot_coverage"], 1 / 3, places=3)
         self.assertFalse(near["binder_region_known"], "two residues are not a VH/VHH domain")
 
+    def test_pair_at_exactly_the_cutoff_is_a_contact(self):
+        # same rule as the immuno MCP (dist <= cutoff); 4.5 A puts the two atoms in adjacent grid cells
+        with tempfile.TemporaryDirectory() as d:
+            at = interface_contacts.analyse(self.synthetic(d, 4.5), "A", ["B"], 4.5, [], "heuristic")
+            beyond = interface_contacts.analyse(self.synthetic(d, 4.501), "A", ["B"], 4.5, [], "heuristic")
+        self.assertEqual((at["contact_residue_pairs"], at["contact_atom_pairs"]), (1, 1))
+        self.assertEqual(beyond["contact_residue_pairs"], 0)
+
     def test_1zvy_interface_is_cdr_dominated(self):
         # the fixture holds backbone atoms only, so use a backbone-scale cutoff (4.5 A heavy-atom contacts are side-chain mediated)
         res = interface_contacts.analyse(os.path.join(FIX, "1zvy_backbone.pdb"), "A", ["B"], 8.0, [], "heuristic")
