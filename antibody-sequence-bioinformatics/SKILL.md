@@ -29,6 +29,8 @@ Scheme table and boundary definitions: [references/numbering.md](references/numb
 4. **QC before analysis.** Run the checklist in `airr-data.md`: productive flags, frame, stop codons, chain-type consistency, duplicate handling, orphan chains in paired data, and a round-trip check that writing then re-reading the file reproduces the records.
 5. **Report flags as flags.** Liability motifs, humanness scores and clonotype groupings are hypotheses with thresholds, and the threshold must travel with the number: [references/liabilities.md](references/liabilities.md).
 
+With the `immuno` MCP connected, `number_sequence` and `annotate_cdrs` run ANARCII for you on one variable domain. Both take a scheme (imgt, kabat, chothia, martin or aho) for the residue labels, but **the regions and CDR boundaries they return are always the IMGT definition**, and the result says so: do not read a Kabat CDR from them. `extract_chains` gives the sequence observed in a structure, `map_epitope_paratope` (with `scheme`) labels paratope residues by region, and `interface_contacts` gives contacts and buried area. Their contact rule is any heavy-atom pair within 4.5 Å, and `scripts/interface_contacts.py` uses the same rule: on PDB 1ZVY (chain A against B) both report 41 residue pairs and 238 atom pairs (checked 2026-11-14).
+
 ## VHH, designed binders and structures
 
 Three standard-library scripts in `scripts/` (Python 3.9+, nothing to install; `--help` on each). Run them from this skill's directory or by full path.

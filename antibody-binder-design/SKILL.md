@@ -1,6 +1,6 @@
 ---
 name: antibody-binder-design
-description: Computational design of antibody-format binders (VHH/nanobody, scFv, Fab) against a given target, from the task text to a ranked, defensible submission - epitope choice, objectives such as cross-species or pH-selective binding turned into design levers, calibration on controls, two or more generation routes, co-folding and scoring (ipTM, ipSAE, pLDDT), filters, a diverse top-N with a decision log, submission CSV and methods. Use when asked to design, rank, filter or select nanobodies or antibody binders, to choose between design models (RFdiffusion, BoltzGen, RFantibody, Germinal, ProteinMPNN, Boltz, Chai, OpenFold, Protenix), to interpret confidence scores, to build a reproducible design pipeline or skill, or to prepare designs for wet-lab testing (Adaptyv, Proteinbase). Orchestrates the tool skills and MCP servers already connected; models screen, they do not measure binding. Use antibody-sequence-bioinformatics for numbering, CDRs, liabilities and contigs, antibody-literature-search for the target dossier, oslo-antibodies-hackathon for that event's rules.
+description: Computational design of antibody-format binders (VHH/nanobody, scFv, Fab) against a given target, from the task text to a ranked, defensible submission - epitope choice, objectives such as cross-species or pH-selective binding turned into design levers, calibration on controls, two or more generation routes, co-folding and scoring (ipTM, ipSAE, pLDDT), filters, a diverse top-N with a decision log, submission CSV and methods. Use when asked to design, rank, filter or select nanobodies or antibody binders, to choose between design models (RFdiffusion, BoltzGen, RFantibody, Germinal, ProteinMPNN, Boltz, Chai, OpenFold, Protenix), to interpret confidence scores, to build a reproducible design pipeline or skill, or to prepare designs for wet-lab testing (Adaptyv, Proteinbase). Orchestrates the tool skills and MCP servers already connected; models screen, they do not measure binding. Use antibody-sequence-bioinformatics for numbering, CDRs, liabilities and contigs, antibody-literature-search for the target dossier, oslo-antibodies-hackathon for that event's rules, antibody-engineering to improve an antibody you already have.
 ---
 
 # Antibody binder design
@@ -43,6 +43,10 @@ Each step ends when its *done* line is true.
 - Repeat across seeds and report the spread; a result seen once may be a lucky seed.
 - Confidence is not affinity. pLDDT, ipTM and PAE say how sure a model is about geometry; a confident complex can still bind weakly, and confidence is least reliable at CDR3.
 - A short list with reasons beats a long list of numbers.
+
+## With the immuno MCP
+
+Where it is connected: `search_antibody_structures` (by UniProt accession) and `get_structure` for known binders of the target; `query_binding_data` for SKEMPI calibration rows; `interface_contacts` and `map_epitope_paratope` for hotspot and CDR contribution on a predicted complex; `compute_ipsae` for the interface score from a PAE file. ipSAE is confidence in the predicted interface, not affinity (see Guard rails). Check `get_server_capabilities`: the default `lab` profile has no generation or folding tool and a spend cap of 0, so design and co-folding run elsewhere and their outputs come in as files.
 
 ## Reference
 

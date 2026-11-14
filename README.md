@@ -1,12 +1,13 @@
 # immunology-skills
 
-Claude Code skills for antibody work — the drug and business side, the literature, the bench reagent, the sequence data, and computational design of nanobody and antibody binders — plus a brief for the AI × Antibodies hackathon in Oslo.
+Claude Code skills for antibody work — the drug and business side, the literature, the bench reagent, the sequence data, engineering of existing antibodies, and computational design of nanobody and antibody binders — plus a brief for the AI × Antibodies hackathon in Oslo.
 
 ## The skills
 
 | Skill | Covers |
 |---|---|
 | [`antibody-binder-design`](antibody-binder-design/SKILL.md) | Designing VHH, scFv and Fab binders against a target, from reading the task to a ranked, defensible submission: target dossier and epitope choice, objectives (cross-species, pH-selective, selectivity) turned into levers and checks, calibration on controls, two or more generation routes, co-folding and scoring, filters, a diverse top-N with a decision log, submission CSV and methods. Scripts: `rank_designs.py`, `check_submission.py`. |
+| [`antibody-engineering`](antibody-engineering/SKILL.md) | Improving an antibody, scFv or VHH you already have: humanisation, affinity maturation, stability and solubility, developability, immunogenicity risk. An eight-step workflow with calibration on known data, plus a tool map by stage (numbering and germline, structure and complex prediction, docking, mutation scoring by physics, inverse folding and language models, generative redesign, developability, T-cell epitope prediction) with every link and paper verified. |
 | [`antibody-sequence-bioinformatics`](antibody-sequence-bioinformatics/SKILL.md) | Sequence, VHH and structure data: IMGT/Kabat/Chothia/Martin numbering, CDR boundaries, ANARCII/ANARCI/abnumber/IgBLAST, VHH hallmark residues, AIRR Rearrangement TSV, clonotype definitions, liability motifs and humanness. Scripts: `vhh_qc.py`, `cdr_contig.py`, `interface_contacts.py`. |
 | [`antibody-literature-search`](antibody-literature-search/SKILL.md) | Finding and summarising papers and database records: Europe PMC, PubMed, UniProt, PDB, SAbDab(-nano), Thera-SAbDab, IMGT, OGRDB, Proteinbase, trial registries, patent sequences, with every identifier resolved before it is cited; a target-dossier procedure for an unseen target. |
 | [`antibody-therapeutics-landscape`](antibody-therapeutics-landscape/SKILL.md) | Antibodies as medicines: IgG subclasses, fragments, VHHs as drugs, bispecifics, ADCs, Fc engineering, INN name decoding, the discovery-to-approval path, regulatory routes (US, EU, Norway), CMC and commercial vocabulary; user fit and path to value for a design tool; biotech employer research and interview prep. |
@@ -24,7 +25,7 @@ cd immunology-skills
 ./install.sh --link   # or symlink them, so the clone is the single source
 ```
 
-The script only touches directories in this repository that contain a `SKILL.md`, and says what it replaced. All six skills are model-invoked, so Claude reaches them on its own when a prompt matches their description; they can also be invoked by name. A copy installed earlier and then edited elsewhere drifts from the repository, which is why the script exists: install from the repository, edit in the repository.
+The script only touches directories in this repository that contain a `SKILL.md`, and says what it replaced. All seven skills are model-invoked, so Claude reaches them on its own when a prompt matches their description; they can also be invoked by name. A copy installed earlier and then edited elsewhere drifts from the repository, which is why the script exists: install from the repository, edit in the repository.
 
 ## Scripts and tests
 

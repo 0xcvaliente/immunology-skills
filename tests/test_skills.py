@@ -540,6 +540,11 @@ class RepoConventions(unittest.TestCase):
             self.assertNotIn(": ", m.group(2), name + ": ': ' inside an unquoted YAML scalar breaks strict parsers")
             self.assertNotIn(" #", m.group(2), name + ": ' #' starts a YAML comment")
 
+    def test_readme_lists_every_skill(self):
+        readme = rtext(os.path.join(ROOT, "README.md"))
+        for name in self.skills():
+            self.assertIn("(%s/SKILL.md)" % name, readme, name + " is missing from the README table")
+
     def test_claude_md_imports_agents_md(self):
         self.assertEqual(rtext(os.path.join(ROOT, "CLAUDE.md")).strip(), "@AGENTS.md")
         self.assertTrue(os.path.isfile(os.path.join(ROOT, "AGENTS.md")))
