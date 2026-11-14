@@ -44,6 +44,10 @@ Each step ends when its *done* line is true.
 - Confidence is not affinity. pLDDT, ipTM and PAE say how sure a model is about geometry; a confident complex can still bind weakly, and confidence is least reliable at CDR3.
 - A short list with reasons beats a long list of numbers.
 
+## With the immuno MCP
+
+Where it is connected: `search_antibody_structures` (by UniProt accession) and `get_structure` for known binders of the target; `query_binding_data` for SKEMPI calibration rows; `interface_contacts` and `map_epitope_paratope` for hotspot and CDR contribution on a predicted complex; `compute_ipsae` for the interface score from a PAE file. ipSAE is confidence in the predicted interface, not affinity (see Guard rails). Check `get_server_capabilities`: the default `lab` profile has no generation or folding tool and a spend cap of 0, so design and co-folding run elsewhere and their outputs come in as files.
+
 ## Reference
 
 - [references/objectives.md](references/objectives.md) — objective types (cross-species, pH-selective, selectivity, mutation-specific, blocking, agonism), the lever and proxy for each.

@@ -44,6 +44,16 @@ Database records carry provenance too. A record is cited with its accession plus
 
 Details, URLs and API notes: [references/resources.md](references/resources.md). Query syntax and worked recipes: [references/search-recipes.md](references/search-recipes.md).
 
+## With the immuno MCP
+
+When the `immuno` MCP server is connected (`get_server_capabilities` shows it), prefer it to hand-written queries for these steps; every result carries `provenance` to cite.
+
+- `resolve_identifier` confirms a PDB id, UniProt accession, PMID, PMCID or DOI before it is written.
+- `search_antibody_structures` queries SAbDab2. **Search by UniProt accession, not by protein name**: a name such as "PD-1" or "Programmed cell death protein 1" with the VHH filter returned no rows on 2026-11-14, while the accession Q15116 returned 51. The name filter matches 25 characters, does not check species, and misses entries that name the antigen differently. Then `get_structure` for the entry, its CDRs and its antigen chains.
+- `search_literature` then `get_passages` read and cite the text; a title alone is not evidence, and passages are abstract-only unless `coverage` says full text.
+- `query_binding_data` returns SKEMPI 2.0 rows (ddG, Kd, the source PMID). The dataset dates from 2018.
+- Datasets the server lists as planned (OAS, AB-Bind, GDPa1, Adaptyv) are not queryable yet. Say so rather than citing them.
+
 ## Search breadth
 
 A single query answers almost nothing in this field. For any question beyond a direct lookup, run several searches in one batch and vary the vocabulary, because the same object has many names:
